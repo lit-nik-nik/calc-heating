@@ -24,8 +24,22 @@ $(document).ready( function(){
 
     });
 
-    summa();
-    clearForm();
+    function summa() {
+        sum = Math.round(100 * area * window * thermal * areaWindow * temp * wall * topRoom * height); 
+        $('#sum').val(sum);
+    }
+
+    function clearForm() {
+        $('#area').val('');
+        $('#window').val('');
+        $('#thermal').val('');
+        $('#area-window').val('');
+        $('#temp').val('');
+        $('#wall').val('');
+        $('#top-room').val('');
+        $('#height').val('');
+        $('#sum').val(0);
+    }
 
     $('#area').on('input', () => {
         area = +$('#area').val();
@@ -67,20 +81,6 @@ $(document).ready( function(){
         summa();
     });
 
-    function summa() {
-        sum = Math.round(100 * area * window * thermal * areaWindow * temp * wall * topRoom * height); 
-        $('#sum').val(sum);
-    }
-
-    function clearForm() {
-        $('#area').val('');
-        $('#window').val('');
-        $('#thermal').val('');
-        $('#area-window').val('');
-        $('#temp').val('');
-        $('#wall').val('');
-        $('#top-room').val('');
-        $('#height').val('');
-        $('#sum').val(0);
-    }
+    summa();
+    clearForm();
 });
