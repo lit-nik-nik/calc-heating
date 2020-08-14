@@ -5,3 +5,7 @@
 .hide {
     display: none;
 }
+
+label {
+    min-height: 50px;
+}
