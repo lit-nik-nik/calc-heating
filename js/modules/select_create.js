@@ -329,7 +329,7 @@ $(document).ready( function(){
         );
     
         $.each(elem.option, (i, opt) => {
-            console.log(`${i} - ${opt.value}; ${opt.name}`)
+            console.log(`${i} - ${opt.value}; ${opt.name}`);
             $(`#${elem.id}`).append(
                 `<option value="${opt.value}">${opt.name}</option>`
             );
