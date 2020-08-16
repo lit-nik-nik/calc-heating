@@ -19,16 +19,19 @@ $(document).ready( function(){
         heater = 1,
         installHeater = 1;
 
+//добавление на кнопку сброса калькулятора
     $('button').on('click', () => {
         clearForm();
     });
 
+//функция расчета мощности
     function summa() {
         sum = ((100 * area * window * thermal * areaWindow * temp * wall * topRoom * height * doors * 
                 bottomRoom * cardinalPoints * wind * heater * installHeater * reserve) / 1000).toFixed(2); 
         $('#sum').val(sum);
     }
 
+//функция сброса всех полей калькулятора в исходное состояние
     function clearForm() {
         $('#reserve').val('');
         $('#area').val('');
@@ -63,6 +66,7 @@ $(document).ready( function(){
         installHeater = 1;
     }
 
+//добавление событий на каждый элемент формы
     $('#area').on('input', () => {
         area = +$('#area').val();
         summa();
