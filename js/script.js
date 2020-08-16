@@ -3,33 +3,34 @@
 $(document).ready( function(){
 
     let sum, 
-        area,
-        window,
-        thermal,
-        areaWindow,
-        temp,
-        wall,
-        topRoom,
-        height;
+        reserve = 1,
+        area = 0,
+        window = 1,
+        doors = 1,
+        thermal = 1,
+        areaWindow = 1,
+        temp = 1,
+        wall = 1,
+        bottomRoom = 1,
+        topRoom = 1,
+        height = 1,
+        cardinalPoints = 1,
+        wind = 1,
+        heater = 1,
+        installHeater = 1;
 
     $('button').on('click', () => {
-        $('.calculator').toggleClass("hide show");
-        $('button').toggleClass('btn-danger btn-success');
-        if ($('button').text() == 'Включить калькулятор') {
-            $('button').text('Выключить калькулятор');
-            clearForm();
-        } else {
-            $('button').text('Включить калькулятор');
-        }
-
+        clearForm();
     });
 
     function summa() {
-        sum = Math.round(100 * area * window * thermal * areaWindow * temp * wall * topRoom * height); 
+        sum = ((100 * area * window * thermal * areaWindow * temp * wall * topRoom * height * doors * 
+                bottomRoom * cardinalPoints * wind * heater * installHeater * reserve) / 1000).toFixed(2); 
         $('#sum').val(sum);
     }
 
     function clearForm() {
+        $('#reserve').val('');
         $('#area').val('');
         $('#window').val('');
         $('#thermal').val('');
@@ -38,7 +39,28 @@ $(document).ready( function(){
         $('#wall').val('');
         $('#top-room').val('');
         $('#height').val('');
+        $('#сardinal-points').val('');
+        $('#wind').val('');
+        $('#bottom-room').val('');
+        $('#doors').val('');
+        $('#heater').val('');
+        $('#install-heater').val('');
         $('#sum').val(0);
+        area = 0;
+        reserve = 1;
+        window = 1;
+        doors = 1;
+        thermal = 1;
+        areaWindow = 1;
+        temp = 1;
+        wall = 1;
+        bottomRoom = 1;
+        topRoom = 1;
+        height = 1;
+        cardinalPoints = 1;
+        wind = 1;
+        heater = 1;
+        installHeater = 1;
     }
 
     $('#area').on('input', () => {
@@ -78,6 +100,41 @@ $(document).ready( function(){
 
     $('#height').on('change', () => {
         height = +$('#height').val();
+        summa();
+    });
+
+    $('#сardinal-points').on('change', () => {
+        cardinalPoints = +$('#сardinal-points').val();
+        summa();
+    });
+
+    $('#wind').on('change', () => {
+        wind = +$('#wind').val();
+        summa();
+    });
+
+    $('#bottom-room').on('change', () => {
+        bottomRoom = +$('#bottom-room').val();
+        summa();
+    });
+
+    $('#doors').on('change', () => {
+        doors = +$('#doors').val();
+        summa();
+    });
+
+    $('#heater').on('change', () => {
+        heater = +$('#heater').val();
+        summa();
+    });
+
+    $('#install-heater').on('change', () => {
+        installHeater = +$('#install-heater').val();
+        summa();
+    });
+
+    $('#reserve').on('change', () => {
+        reserve = +$('#reserve').val();
         summa();
     });
 
